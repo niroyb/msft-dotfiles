@@ -1,6 +1,36 @@
 ;; Useful reminders
 ;;   To describe a variable:	C-h v
 
+;; Intall melpa
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
+
+;;tramp
+(setq tramp-default-method "ssh")
+(setq tramp-default-user "niroy")
+
+;;Remove toolbar with big buttons
+(tool-bar-mode -1)
+
+;;Use Spaces instead of tab
+(setq-default indent-tabs-mode nil)
+
+;;Auto reload from disc
+(global-auto-revert-mode 1)
+(setq auto-revert-verbose nil)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+
+;;Autocomplete
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+(ac-config-default)
+
 ;; First of all - skip the copyright message
 (setq inhibit-startup-message t)
 (setq enable-recursive-minibuffers  t)
@@ -12,21 +42,46 @@
   (cond ((y-or-n-p "Really quit emacs? ") (save-buffers-kill-emacs))
 	(t (message "Nope."))))
 
+;;CEDET
+(load-file "/opt/cedet-1.1/common/cedet.el")
+(global-ede-mode 1)                      ; Enable the Project management system
+(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
+(global-srecode-minor-mode 1)            ; Enable template insertion menu
+
+;;Colortheme
+(add-to-list 'load-path "/opt/color-theme-6.6.0/")
+
+;;Solarized
+(add-to-list 'load-path "/opt/emacs-color-theme-solarized/")
+(require 'color-theme-solarized)
+(require 'color-theme)
+(color-theme-solarized-dark)
+
+;; ECB
+(add-to-list 'load-path "/opt/ecb-2.40/")
+(require 'ecb)
+
+
 (custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(current-language-environment "UTF-8")
  '(default-input-method "rfc1345")
- '(delete-selection-mode nil nil (delsel))
+ '(delete-selection-mode 1)
+ '(ecb-options-version "2.40")
  '(global-font-lock-mode t nil (font-lock))
  '(scroll-bar-mode (quote right))
  '(show-paren-mode t nil (paren))
  '(transient-mark-mode t))
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  )
 
 (require 'cc-mode)
@@ -49,10 +104,9 @@
              ;; Auto-newline
              (c-toggle-auto-state -1)
              ;; Also use spaces instead of tabs
-               ;;(add-hook 'local-write-file-hooks
-	       ;;          '(lambda() 
-	       ;; 	  (untabify (point-min) (point-max))))
-	     (setq-default indent-tabs-mode nil)
+             (add-hook 'local-write-file-hooks
+		       '(lambda() 
+			  (untabify (point-min) (point-max))))
              ;; Display function/method name in status line
              (which-function-mode 1)
              ;; Don't want line-wrapping when printing code
