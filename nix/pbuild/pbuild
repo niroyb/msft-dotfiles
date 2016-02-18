@@ -28,7 +28,7 @@ logdir_prior: ~/pbuild_logs/prior
 # You can customize with a line like the following:
 # select: om
 
-select: om
+select: omi
 
 #
 # Systems to exclude in the build:
@@ -177,10 +177,10 @@ host:	suse_11_64	osdev64-sles11-01	~/dev/omi		omi
 #host:	suse_12_64	dev64-sles12-01		~/dev/omi		omi
 host:	ubuntu_14_64	osdev64-ubun14-01	~/dev/omi		omi
 
-host:	centos_7_64_p	jeffcof64-cent7x-01	~/dev/p-repos/omi	omi
+#host:	centos_7_64_p	jeffcof64-cent7x-01	~/dev/p-repos/omi	omi
 
 #
 # PAL Project
 #
 
-host:	centos_7_64_p	jeffcof64-cent7x-01	~/dev/pal		pal
+#host:	centos_7_64_p	jeffcof64-cent7x-01	~/dev/pal		pal
