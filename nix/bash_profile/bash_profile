@@ -937,7 +937,7 @@ prompt_yes_no()
 git_prompt()
 {
     if which git > /dev/null 2>&1; then
-        [ ! -d ~/.bash-git-prompt ] && git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
+        [ ! -d ~/.bash-git-prompt ] && git clone git@github.com:magicmonty/bash-git-prompt.git ~/.bash-git-prompt
         source ~/.bash-git-prompt/gitprompt.sh
     fi
 }
