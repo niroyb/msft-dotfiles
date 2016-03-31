@@ -28,7 +28,7 @@ logdir_prior: ~/pbuild_logs/prior
 # You can customize with a line like the following:
 # select: om
 
-select: omi
+select: oms
 
 #
 # Systems to exclude in the build:
@@ -46,7 +46,7 @@ select: omi
 #
 # settings: LogfileRename,NoSummaryScreen
 
-settings: NoDiagnoseErrors,NoCheckValidity,LogfileRename,NoSummaryScreen
+settings: NoDiagnoseErrors,NoCheckValidity,LogfileRename
 
 #
 # Per-project configuration options:
