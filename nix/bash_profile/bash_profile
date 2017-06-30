@@ -35,6 +35,8 @@ alias sublime="/opt/sublime_text/sublime_text"
 #alias sublimeRebuildSymbols="rm ~/.config/sublime-text-3/Index/*"
 export GREP_OPTIONS='--color=auto'
 
+export GOPATH=`pwd`
+
 # Append history instead of rewriting it
 shopt -s histappend
 # Allow a larger history file
